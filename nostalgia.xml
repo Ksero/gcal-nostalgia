@@ -28,16 +28,17 @@ function eventCallback(response) {
       continue;
     }
 
-    out += '<b>One Year Ago</b><p/>
+    out += '<b>One Year Ago</b><p/>'
 
     var events = response[i]['events'];
     for(var j = 0; j < events.length; ++j) {
       var e = events[j];
       if ('title' in e) {
-		out += '<a onclick="google.calendar.showEvent(\'' + e.id + '\'">' + e.title + '</a><p/>
+		out += '<a onclick="google.calendar.showEvent(\'' + e.id + '\')">' + e.title + '</a><p/>'
       }
     }
   }
+  alert(out);
   document.write(out);
 }
 run();
