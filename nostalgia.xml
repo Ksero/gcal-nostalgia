@@ -41,7 +41,7 @@ function eventCallback(response) {
   alert(out);
   document.write(out);
 }
-run();
+gadgets.util.registerOnLoadHandler(run);
 </script>
 </body>
 </html>
