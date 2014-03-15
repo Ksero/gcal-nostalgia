@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Module>
 <ModulePrefs title="One Year Ago" height="100" author="Andreas Domfors" author_email="andreas.domfors@gmail.com">
-<Optional feature="google.calendar-0.5.read"/>
+<Require feature="google.calendar-0.5.read"/>
+<Require feature="locked-domain"/>
 </ModulePrefs>
   <Content type="html">
   
