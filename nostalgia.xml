@@ -15,14 +15,15 @@
 
 function run() {
 var currentdate = new Date();
-var startDate, endDate;
+var startDate;
+var endDate;
 var offset = 1;
   startDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentdate.getDay(),
                    hour : 0, minute: 0, second: 0};
   endDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentday.getDay()+1,
                  hour : 0, minute: 0, second: 0};
 
-  var calendars = 'selected'
+  var calendars = 'selected';
   google.calendar.read.getEvents(makeCallback("<b>One Year Ago</b><p/>", calendars, startDate, endDate);
   
   offset = 2;
