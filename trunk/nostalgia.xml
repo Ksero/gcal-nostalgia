@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Module>
-  <ModulePrefs title="getEvents Test" height="100" author="Google"
-     author_email="calendar-gadget-questions@google.com">
-    <Optional feature="google.calendar-0.5.read"/>
-</ModulePrefs>
+<ModulePrefs title="hello world example" />
   <Content type="html">
   <![CDATA[
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
