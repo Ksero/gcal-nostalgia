@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Module>
-<ModulePrefs title="hello world example" />
+<ModulePrefs title="One Year Ago" />
   <Content type="html">
   <![CDATA[
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
@@ -17,18 +17,18 @@ function run() {
 
   var calendars = '@viewer'
 
+  document.write("Calling getEvents");
   google.calendar.read.getEvents(eventCallback, calendars, startDate, endDate);
 }
 
 function eventCallback(response) {
   var out = '';
+  document.write("Got response");
   for (var i = 0; i < response.length; ++i) {
     if ('error' in response[i]) {
       out += 'Can\'t load calendar for ' + response[i].email + '\n';
       continue;
     }
-
-    out += '<b>One Year Ago</b><p/>'
 
     var events = response[i]['events'];
     for(var j = 0; j < events.length; ++j) {
@@ -41,9 +41,10 @@ function eventCallback(response) {
   alert(out);
   document.write(out);
 }
-setTimeout(run, 1000);
+//setTimeout(run, 1000);
 //gadgets.util.registerOnLoadHandler(run);
 </script>
+<button onclick="run()">test</button>
 </body>
 </html>
   ]]></Content>
