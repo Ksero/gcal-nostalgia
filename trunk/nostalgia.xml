@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Module>
-<ModulePrefs title="One Year Ago" />
+<ModulePrefs title="One Year Ago">
+<Optional feature="google.calendar-0.5.read"/>
+</ModulePrefs>
   <Content type="html">
+  
   <![CDATA[
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
   "http://www.w3.org/TR/html4/strict.dtd">
@@ -41,10 +44,8 @@ function eventCallback(response) {
   alert(out);
   document.write(out);
 }
-//setTimeout(run, 1000);
-//gadgets.util.registerOnLoadHandler(run);
+gadgets.util.registerOnLoadHandler(run);
 </script>
-<button onclick="run()">test</button>
 </body>
 </html>
   ]]></Content>
