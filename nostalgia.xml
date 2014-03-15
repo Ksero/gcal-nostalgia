@@ -14,20 +14,18 @@
 <script>
 
 function run() {
-  var startDate = {year: 2013, month: 3, date : 15,
+var currentdate = new Date();
+  var startDate = {year: currentdate.getFullYear()-1, month: currentdate.getMonth(), date : currentdate.getDay(),
                    hour : 0, minute: 0, second: 0};
-  var endDate = {year: 2013, month: 3, date : 16,
+  var endDate = {year: currentdate.getFullYear()-1, month: currentdate.getMonth(), date : currentday.getDay()+1,
                  hour : 0, minute: 0, second: 0};
 
   var calendars = '@viewer'
-
-  document.write("Calling getEvents");
   google.calendar.read.getEvents(eventCallback, calendars, startDate, endDate);
 }
 
 function eventCallback(response) {
   var out = '';
-  document.write("Got response");
   for (var i = 0; i < response.length; ++i) {
     if ('error' in response[i]) {
       out += 'Can\'t load calendar for ' + response[i].email + '\n';
@@ -42,7 +40,6 @@ function eventCallback(response) {
       }
     }
   }
-  alert(out);
   document.write(out);
 }
 gadgets.util.registerOnLoadHandler(run);
