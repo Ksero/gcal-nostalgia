@@ -24,7 +24,7 @@ var offset = 1;
                  hour : 0, minute: 0, second: 0};
 
   var calendars = 'selected';
-  google.calendar.read.getEvents(makeCallback("<b>One Year Ago</b><p/>", calendars, startDate, endDate);
+  google.calendar.read.getEvents(makeCallback("<b>One Year Ago</b><p/>"), calendars, startDate, endDate);
   
   offset = 2;
   startDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentdate.getDay(),
