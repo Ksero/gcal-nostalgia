@@ -2,6 +2,7 @@
 <Module>
 <ModulePrefs title="Nostalgia" height="100" author="Andreas Domfors" author_email="andreas.domfors@gmail.com">
 <Require feature="google.calendar-0.5.read"/>
+<Require feature="dynamic-height"/>
 <Require feature="locked-domain"/>
 </ModulePrefs>
   <Content type="html">
@@ -38,6 +39,7 @@ function makeCallback(index, out, isFinal) {
 	  index = index + 1;
 	  if(index>= years.length) {
 		document.write(out);
+		gadgets.window.adjustHeight();
 		}
 	  else {
 	    makeCallback(index, out);
@@ -49,7 +51,7 @@ function makeCallback(index, out, isFinal) {
 					   hour : 0, minute: 0, second: 0};
 	var endDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentdate.getDay()+1,
 					 hour : 0, minute: 0, second: 0};
-	var calendars = 'selected';
+	var calendars = '@viewer';
 	google.calendar.read.getEvents(eventCallback, calendars, startDate, endDate);
 }
 gadgets.util.registerOnLoadHandler(run);
