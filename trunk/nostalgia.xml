@@ -47,13 +47,13 @@ function makeCallback(index, out, isFinal) {
 	}
 	var currentdate = new Date();
 	var offset = years[index];
-	var startDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentdate.getDay(),
+	var startDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentdate.getDate(),
 					   hour : 0, minute: 0, second: 0};
 	msg = 'year ' + startDate.year.toString() + ", month " + startDate.month.toString() + ", date " + startDate.date.toString() + ", offset " + offset.toString();
 	alert(msg);
-	var endDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentdate.getDay()+1,
+	var endDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentdate.getDate()+1,
 					 hour : 0, minute: 0, second: 0};
-	var calendars = '@viewer';
+	var calendars = 'selected';
 	google.calendar.read.getEvents(eventCallback, calendars, startDate, endDate);
 }
 gadgets.util.registerOnLoadHandler(run);
