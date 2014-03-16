@@ -16,7 +16,7 @@
 var years = new Array(1, 2, 5);
 
 function run() {
-var out = '';
+var out = 't<br/>';
 	makeCallback(0, out);
 }
 function makeCallback(index, out, isFinal) {
@@ -38,7 +38,7 @@ function makeCallback(index, out, isFinal) {
 	  }
 	  index = index + 1;
 	  if(index>= years.length) {
-		document.write(out);
+		document.getElementById('content_div').innerHTML = out;
 		gadgets.window.adjustHeight();
 		}
 	  else {
@@ -56,6 +56,7 @@ function makeCallback(index, out, isFinal) {
 }
 gadgets.util.registerOnLoadHandler(run);
 </script>
+<div id="content_div"></div>
 </body>
 </html>
   ]]></Content>
