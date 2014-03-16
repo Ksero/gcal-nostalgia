@@ -20,7 +20,7 @@ var endDate;
 var offset = 1;
   startDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentdate.getDay(),
                    hour : 0, minute: 0, second: 0};
-  endDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentday.getDay()+1,
+  endDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentdate.getDay()+1,
                  hour : 0, minute: 0, second: 0};
 
   var calendars = 'selected';
@@ -29,7 +29,7 @@ var offset = 1;
   offset = 2;
   startDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentdate.getDay(),
                    hour : 0, minute: 0, second: 0};
-  endDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentday.getDay()+1,
+  endDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentdate.getDay()+1,
                  hour : 0, minute: 0, second: 0};  
 google.calendar.read.getEvents(makeCallback("<b>Two Years Ago</b><p/>"), calendars, startDate, endDate);				 
 }
