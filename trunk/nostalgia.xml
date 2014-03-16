@@ -31,7 +31,7 @@ var offset = 1;
                    hour : 0, minute: 0, second: 0};
   endDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentday.getDay()+1,
                  hour : 0, minute: 0, second: 0};  
-google.calendar.read.getEvents(makeCallback("<b>Two Years Ago</b><p/>", calendars, startDate, endDate);				 
+google.calendar.read.getEvents(makeCallback("<b>Two Years Ago</b><p/>"), calendars, startDate, endDate);				 
 }
 function makeCallback(header) {
 	function eventCallback(response) {
