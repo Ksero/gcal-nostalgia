@@ -12,31 +12,15 @@
 <html>
 <body>
 <script>
+var years = new Array(1, 2, 5);
 
 function run() {
-var currentdate = new Date();
-var startDate;
-var endDate;
-var offset = 1;
-  startDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentdate.getDay(),
-                   hour : 0, minute: 0, second: 0};
-  endDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentdate.getDay()+1,
-                 hour : 0, minute: 0, second: 0};
-
-  var calendars = 'selected';
-  var out = '';
-  google.calendar.read.getEvents(makeCallback("<b>One Year Ago</b><p/>", out, false), calendars, startDate, endDate);
-  
-  offset = 2;
-  startDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentdate.getDay(),
-                   hour : 0, minute: 0, second: 0};
-  endDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentdate.getDay()+1,
-                 hour : 0, minute: 0, second: 0};  
-google.calendar.read.getEvents(makeCallback("<b>Two Years Ago</b><p/>", out, true), calendars, startDate, endDate);				 
+var out = '';
+	makeCallback(0, out);
 }
-function makeCallback(header, out, isFinal) {
+function makeCallback(index, out, isFinal) {
 	function eventCallback(response) {
-	  out += header;
+	  out += "<b>" + years[index].toString() + " years ago</b><p/>";
 	  for (var i = 0; i < response.length; ++i) {
 		if ('error' in response[i]) {
 		  out += 'Can\'t load calendar for ' + response[i].email + '\n';
@@ -47,15 +31,26 @@ function makeCallback(header, out, isFinal) {
 		for(var j = 0; j < events.length; ++j) {
 		  var e = events[j];
 		  if ('title' in e) {
-			out += '<a onclick="google.calendar.showEvent(\'' + e.id + '\')">' + e.title + '</a><p/>'
+			out += '<a onclick="google.calendar.showEvent(\'' + e.id + '\')">' + e.title + '</a><br/>'
 		  }
 		}
 	  }
-	  if(isFinal) {
+	  index = index + 1;
+	  if(index>= years.length) {
 		document.write(out);
 		}
+	  else {
+	    makeCallback(index, out);
+		}
 	}
-	return eventCallback;
+	var currentdate = new Date();
+	var offset = years[index];
+	var startDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentdate.getDay(),
+					   hour : 0, minute: 0, second: 0};
+	var endDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentdate.getDay()+1,
+					 hour : 0, minute: 0, second: 0};
+	var calendars = 'selected';
+	google.calendar.read.getEvents(callback, calendars, startDate, endDate);
 }
 gadgets.util.registerOnLoadHandler(run);
 </script>
