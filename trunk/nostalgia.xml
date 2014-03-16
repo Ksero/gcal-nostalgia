@@ -16,7 +16,7 @@
 var years = new Array(1, 2, 5);
 
 function run() {
-var out = 't<br/>';
+var out = 'F<br/>';
 	makeCallback(0, out);
 }
 function makeCallback(index, out, isFinal) {
@@ -49,8 +49,10 @@ function makeCallback(index, out, isFinal) {
 	var offset = years[index];
 	var startDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentdate.getDay(),
 					   hour : 0, minute: 0, second: 0};
+	alert(startDate.toString());
 	var endDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentdate.getDay()+1,
 					 hour : 0, minute: 0, second: 0};
+	alert(endDate.toString());
 	var calendars = '@viewer';
 	google.calendar.read.getEvents(eventCallback, calendars, startDate, endDate);
 }
