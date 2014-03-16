@@ -52,7 +52,7 @@ function makeCallback(header, out, isFinal) {
 		}
 	  }
 	  if(isFinal) {
-		window.setTimeout(500, function () { document.write(out); });
+		document.write(out);
 		}
 	}
 	return eventCallback;
