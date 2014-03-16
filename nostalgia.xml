@@ -50,7 +50,7 @@ function makeCallback(index, out, isFinal) {
 	var endDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentdate.getDay()+1,
 					 hour : 0, minute: 0, second: 0};
 	var calendars = 'selected';
-	google.calendar.read.getEvents(callback, calendars, startDate, endDate);
+	google.calendar.read.getEvents(eventCallback, calendars, startDate, endDate);
 }
 gadgets.util.registerOnLoadHandler(run);
 </script>
