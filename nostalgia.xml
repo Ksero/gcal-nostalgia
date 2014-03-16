@@ -24,18 +24,19 @@ var offset = 1;
                  hour : 0, minute: 0, second: 0};
 
   var calendars = 'selected';
-  google.calendar.read.getEvents(makeCallback("<b>One Year Ago</b><p/>"), calendars, startDate, endDate);
+  var out = '';
+  google.calendar.read.getEvents(makeCallback("<b>One Year Ago</b><p/>", out, false), calendars, startDate, endDate);
   
   offset = 2;
   startDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentdate.getDay(),
                    hour : 0, minute: 0, second: 0};
   endDate = {year: currentdate.getFullYear()-offset, month: currentdate.getMonth(), date : currentdate.getDay()+1,
                  hour : 0, minute: 0, second: 0};  
-google.calendar.read.getEvents(makeCallback("<b>Two Years Ago</b><p/>"), calendars, startDate, endDate);				 
+google.calendar.read.getEvents(makeCallback("<b>Two Years Ago</b><p/>", out, true), calendars, startDate, endDate);				 
 }
-function makeCallback(header) {
+function makeCallback(header, out, isFinal) {
 	function eventCallback(response) {
-	  var out = header;
+	  out += header;
 	  for (var i = 0; i < response.length; ++i) {
 		if ('error' in response[i]) {
 		  out += 'Can\'t load calendar for ' + response[i].email + '\n';
@@ -50,7 +51,9 @@ function makeCallback(header) {
 		  }
 		}
 	  }
-	  document.write(out);
+	  if(isFinal) {
+		window.setTimeout(500, function () { document.write(out); });
+		}
 	}
 	return eventCallback;
 }
